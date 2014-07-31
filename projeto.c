@@ -38,14 +38,14 @@ scanf("%s", &nome);
 if(nome[0] < pRaiz->info->nome[0]){
     if (strcmp(nome , pRaiz->esq)==0 ) {
 
-       printf("\n%s\n",pRaiz->esq->nome);
-       printf("\n%s\n",pRaiz->esq->sexo);
-       printf("\n%s\n",pRaiz->esq->pai);
-       printf("\n%s\n",pRaiz->esq->mae);
-       printf("\n%s\n",pRaiz->esq->conj);
-       printf("\n%s\n",pRaiz->esq->sconj);
-       printf("\n%s\n",pRaiz->esq->filho);
-       printf("\n%s\n",pRaiz->esq->irmao);
+       printf("\nNome: %s\n",pRaiz->esq->nome);
+       printf("\nSexo: %s\n",pRaiz->esq->sexo);
+       printf("\nPai: %s\n",pRaiz->esq->pai);
+       printf("\nMãe: %s\n",pRaiz->esq->mae);
+       printf("\nConjugue: %s\n",pRaiz->esq->conj);
+       printf("\nSexo do(a) Conjugue: %s\n",pRaiz->esq->sconj);
+       printf("\nFilho(se tiver): %s\n",pRaiz->esq->filho);
+       printf("\nIrmão: %s\n",pRaiz->esq->irmao);
 
     }
     else {
@@ -56,14 +56,14 @@ if(nome[0] < pRaiz->info->nome[0]){
 if(nome[0] > pRaiz->info->nome[0]){
     if (strcmp(nome , pRaiz->dir)==0 ) {
 
-       printf("\n%s\n",pRaiz->dir->nome);
-       printf("\n%s\n",pRaiz->dir->sexo);
-       printf("\n%s\n",pRaiz->dir->pai);
-       printf("\n%s\n",pRaiz->dir->mae);
-       printf("\n%s\n",pRaiz->dir->conj);
-       printf("\n%s\n",pRaiz->dir->sconj);
-       printf("\n%s\n",pRaiz->dir->filho);
-       printf("\n%s\n",pRaiz->dir->irmao);
+       printf("\nNome: %s\n",pRaiz->dir->nome);
+       printf("\nSexo: %s\n",pRaiz->dir->sexo);
+       printf("\nPai: %s\n",pRaiz->dir->pai);
+       printf("\nMãe: %s\n",pRaiz->dir->mae);
+       printf("\nConjugue: %s\n",pRaiz->dir->conj);
+       printf("\nSexo do(a) Conjugue: %s\n",pRaiz->dir->sconj);
+       printf("\nFilho(se tiver): %s\n",pRaiz->dir->filho);
+       printf("\nIrmão: %s\n",pRaiz->dir->irmao);
 
     }
     else {
@@ -75,14 +75,14 @@ if(nome[0] > pRaiz->info->nome[0]){
 
     if (strcmp(nome , pRaiz->info)==0 ) {
 
-         printf("\n%s\n",pRaiz->info->nome);
-         printf("\n%s\n",pRaiz->info->sexo);
-         printf("\n%s\n",pRaiz->info->pai);
-         printf("\n%s\n",pRaiz->info->mae);
-         printf("\n%s\n",pRaiz->info->conj);
-         printf("\n%s\n",pRaiz->info->sconj);
-         printf("\n%s\n",pRaiz->info->filho);
-         printf("\n%s\n",pRaiz->info->irmao);
+       printf("\nNome: %s\n",pRaiz->info->nome);
+       printf("\nSexo: %s\n",pRaiz->info->sexo);
+       printf("\nPai: %s\n",pRaiz->info->pai);
+       printf("\nMãe: %s\n",pRaiz->info->mae);
+       printf("\nConjugue: %s\n",pRaiz->info->conj);
+       printf("\nSexo do(a) Conjugue: %s\n",pRaiz->info->sconj);
+       printf("\nFilho(se tiver): %s\n",pRaiz->info->filho);
+       printf("\nIrmão: %s\n",pRaiz->info->irmao);
 
     }
     else {
