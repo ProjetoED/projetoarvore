@@ -11,11 +11,13 @@ struct No {
      char filho[10];
      char irmao[10];
      char sconj[10];
-     int idade;
+
 };
 
 struct Arv {
      struct No *info;
+     struct No *esq;
+      struct No *dir;
      struct arv *acima;
      struct arv *esquerda;
      struct arv *direita;
@@ -26,52 +28,122 @@ typedef struct Arv arv;
 
 void criarArvore(arv *pRaiz){
     pRaiz->acima = NULL;
+    (pRaiz)->info=NULL;
+    (pRaiz)->esq = NULL;
+    (pRaiz)->dir = NULL;
+
 
 }
 
+void busca(arv *pRaiz){
+
+char nome[10];
+printf("Informe o nome desejado: ");
+scanf("%s", &nome);
+
+if(nome[0] < pRaiz->info->nome[0]){
+    if (strcmp(nome , pRaiz->esq)==0 ) {
+
+       printf("\n%s\n",pRaiz->esq->nome);
+       printf("\n%s\n",pRaiz->esq->sexo);
+       printf("\n%s\n",pRaiz->esq->pai);
+       printf("\n%s\n",pRaiz->esq->mae);
+       printf("\n%s\n",pRaiz->esq->conj);
+       printf("\n%s\n",pRaiz->esq->sconj);
+       printf("\n%s\n",pRaiz->esq->filho);
+       printf("\n%s\n",pRaiz->esq->irmao);
+
+    }
+    else {
+        printf("Nome nao encontrado");
+    }
+
+}
+if(nome[0] > pRaiz->info->nome[0]){
+    if (strcmp(nome , pRaiz->dir)==0 ) {
+
+       printf("\n%s\n",pRaiz->dir->nome);
+       printf("\n%s\n",pRaiz->dir->sexo);
+       printf("\n%s\n",pRaiz->dir->pai);
+       printf("\n%s\n",pRaiz->dir->mae);
+       printf("\n%s\n",pRaiz->dir->conj);
+       printf("\n%s\n",pRaiz->dir->sconj);
+       printf("\n%s\n",pRaiz->dir->filho);
+       printf("\n%s\n",pRaiz->dir->irmao);
+
+    }
+    else {
+        printf("Nome nao encontrado");
+    }
+
+}
+
+
+    if (strcmp(nome , pRaiz->info)==0 ) {
+
+         printf("\n%s\n",pRaiz->info->nome);
+         printf("\n%s\n",pRaiz->info->sexo);
+         printf("\n%s\n",pRaiz->info->pai);
+         printf("\n%s\n",pRaiz->info->mae);
+         printf("\n%s\n",pRaiz->info->conj);
+         printf("\n%s\n",pRaiz->info->sconj);
+         printf("\n%s\n",pRaiz->info->filho);
+         printf("\n%s\n",pRaiz->info->irmao);
+
+    }
+    else {
+        printf("Nome nao encontrado");
+    }
+
+
+
+
+}
 
 
 void exibirPreOrdem(arv *pRaiz){
-    if(pRaiz != NULL){
-        printf("\n%s", pRaiz->info->nome);
-        exibirPreOrdem(pRaiz->esquerda);
-        exibirPreOrdem(pRaiz->direita);
+    if(pRaiz!= NULL){
+
+        printf("\n%s\n", pRaiz->info->nome);
+        printf("\n%s\n",pRaiz->esquerda);
+        printf("\n%s\n",pRaiz->direita);
+
     }
 }
-
 void insere(arv *pRaiz, struct No *aux)
 {
 
-  if(pRaiz->acima == NULL){
-        (pRaiz)->esquerda = NULL;
-        (pRaiz)->direita = NULL;
+
+  if((pRaiz)->info == NULL){
+        (pRaiz)->esq = NULL;
+        (pRaiz)->dir = NULL;
         (pRaiz)->info = aux;
 }
     else
     {
-        if(pRaiz->info->nome[0] <= aux->nome[0])
+
+           if(aux->nome[0] <= pRaiz->info->nome[0])
         {
-            insere(&(pRaiz)->esquerda, aux);
+            (pRaiz)->esq = aux;
         }
-        if(pRaiz->info->nome[0] > aux->nome[0])
+         if(aux->nome[0] > pRaiz->info->nome[0])
         {
-            insere(&(pRaiz)->direita, aux);
+            (pRaiz)->dir = aux;
         }
     }
 }
 
+
+
 void registra(arv *pRaiz){
 
-char *pai, *mae, *conj, *filho, *irmao, *sconj;
-int *idade;
+
 struct No *aux =(struct No *) malloc(sizeof(struct No));
 char a[10];
 
 printf("\nInforme o nome: ");
 fflush(stdin);
 gets  (aux->nome);
-printf("\nInforme a idade: ");
-scanf ("%d",&aux->idade);
 fflush(stdin);
 printf("\nInforme o sexo: ");
 gets  (aux->sexo);
@@ -110,7 +182,7 @@ printf("\nRegistrado!\n");
 void imprime(arv *pRaiz)
 {
 puts(pRaiz->info->nome);
-printf("%i\n",pRaiz->info->idade);
+
 puts(pRaiz->info->sexo);
 puts(pRaiz->info->pai);
 puts(pRaiz->info->mae);
@@ -144,7 +216,7 @@ void menu(arv *pRaiz)
         }
       case 2:
         {
-          imprime(pRaiz);
+          busca(pRaiz);
           system("pause");
           break;
         }
