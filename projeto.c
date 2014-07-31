@@ -1,7 +1,23 @@
+/* ***************************************************************
+
+    Autor: Felipe Baruch, Pablo Oliveira, Ramon Mascarenhas.
+    Inicio: 27/07/2014
+    Ultima alteracao: 31/07/2014
+    Nome: Arvore Genealógica
+    Funcao: O programa deve conter dois modulos de acesso, um que permita ao usuario cadastrar individuos
+    e informações de parentescos do mesmo em uma estrutura de dados dinamica do tipo arvore e outro modulo
+    que permita ao usuario consultar algum individuo da arvore através do nome, disponibilizando as informações
+    de parentesco deste individuo na tela.
+    *************************************************************** */
+
+
+
+///Bibliotecas usadas
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+///Estrutura em que vai se basear as informações a serem inseridas
 struct No {
      char nome[10];
      char sexo[10];
@@ -13,28 +29,38 @@ struct No {
      char sconj[10];
 
 };
-
+///Estrutura em que se baseia a arvore, tendo 3 ponteiros que apontam para a informação, para esquerda e para direita respectivamente
 struct Arv {
      struct No *info;
      struct No *esq;
      struct No *dir;
 };
 
-typedef struct Arv arv;
+typedef struct Arv arv; ///Definição do tipo da arvore
 
-void criarArvore(arv *pRaiz){
+///Indice de funções do programa
+void criarArvore(arv *pRaiz);
+void busca(arv *pRaiz);
+void insere(arv *pRaiz, struct No *aux);
+void registra(arv *pRaiz);
+void menu(arv *pRaiz);
+
+
+///Função responsavel por inicializar a arvore, apontando seus tres ponteiros para nulo
+void criarArvore(arv *pRaiz){ 
     (pRaiz)->info=NULL;
     (pRaiz)->esq = NULL;
     (pRaiz)->dir = NULL;
 }
 
+///Função responsavel por buscar na arvore por algum nome que o usuario de como entrada para a consulta
 void busca(arv *pRaiz){
 
 char nome[10];
 
 printf("Informe o nome desejado: ");
 scanf("%s", &nome);
-
+///As condições a seguir são para verificar se o nome consultado está em algum dos tres ponteiros principais da estrutura
 if(nome[0] < pRaiz->info->nome[0]){
     if (strcmp(nome , pRaiz->esq)==0 ) {
 
@@ -95,17 +121,17 @@ if(nome[0] > pRaiz->info->nome[0]){
 }
 
 
-
+///Função responsavel por inserir um elemento na arvore
 void insere(arv *pRaiz, struct No *aux)
 {
 
-
+///A seguinte condição irá comparar se a casa atual é nulo e irá inserir a informação
   if((pRaiz)->info == NULL){
         (pRaiz)->esq = NULL;
         (pRaiz)->dir = NULL;
         (pRaiz)->info = aux;
 }
-    else
+    else///Se não irá inserir na esquerda ou direita dependendo da ordem que devera ser seguida
     {
 
            if(aux->nome[0] <= pRaiz->info->nome[0])
@@ -120,11 +146,11 @@ void insere(arv *pRaiz, struct No *aux)
 }
 
 
-
+///Função responsavel por receber as informações do individuo a ser inserido pelo usuario
 void registra(arv *pRaiz){
 
 
-struct No *aux =(struct No *) malloc(sizeof(struct No));
+struct No *aux =(struct No *) malloc(sizeof(struct No));///Alocação do novo elemento a ser inserido
 char a[10];
 
 printf("\nInforme o nome: ");
@@ -160,13 +186,13 @@ gets  (aux->filho);
 }
 
 strcpy(aux->irmao, a);
-insere(pRaiz, aux);
+insere(pRaiz, aux); ///Chamada da função de inserção
 printf("\nRegistrado!\n");
 
 }
 
 
-
+///Função responsavel por dizponibilizar a interface de acesso do usuario, recebendo uma opção do mesmo e acessando as outras funções através dessa opção
 void menu(arv *pRaiz)
 {
     int op;
@@ -185,13 +211,13 @@ void menu(arv *pRaiz)
       case 1:
         {
             system("cls");
-            registra(pRaiz);
+            registra(pRaiz);///Chamada da função de registrar
             system("pause");
             break;
         }
       case 2:
         {
-          busca(pRaiz);
+          busca(pRaiz);///Chamada da função que buscará um individuo por nome
           system("pause");
           break;
         }
@@ -210,13 +236,13 @@ void menu(arv *pRaiz)
 
 
 
-int main()
+int main()///Função principal
 {
-    arv *arvore = (arv*)malloc(sizeof (arv));
+    arv *arvore = (arv*)malloc(sizeof (arv));///Criação da arvore e alocação de memoria da mesma
 
 
-    criarArvore(arvore);
-    menu(arvore);
+    criarArvore(arvore);///Chamada da função que inicializa a arvore
+    menu(arvore);///Chamada do menu
 
 
 }
