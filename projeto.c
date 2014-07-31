@@ -17,27 +17,21 @@ struct No {
 struct Arv {
      struct No *info;
      struct No *esq;
-      struct No *dir;
-     struct arv *acima;
-     struct arv *esquerda;
-     struct arv *direita;
-
+     struct No *dir;
 };
 
 typedef struct Arv arv;
 
 void criarArvore(arv *pRaiz){
-    pRaiz->acima = NULL;
     (pRaiz)->info=NULL;
     (pRaiz)->esq = NULL;
     (pRaiz)->dir = NULL;
-
-
 }
 
 void busca(arv *pRaiz){
 
 char nome[10];
+
 printf("Informe o nome desejado: ");
 scanf("%s", &nome);
 
@@ -55,7 +49,7 @@ if(nome[0] < pRaiz->info->nome[0]){
 
     }
     else {
-        printf("Nome nao encontrado");
+        printf("\nNome nao registrado!\n");
     }
 
 }
@@ -73,7 +67,7 @@ if(nome[0] > pRaiz->info->nome[0]){
 
     }
     else {
-        printf("Nome nao encontrado");
+        printf("\nNome nao registrado!\n");
     }
 
 }
@@ -92,7 +86,7 @@ if(nome[0] > pRaiz->info->nome[0]){
 
     }
     else {
-        printf("Nome nao encontrado");
+        printf("\nNome nao registrado!\n");
     }
 
 
@@ -101,15 +95,7 @@ if(nome[0] > pRaiz->info->nome[0]){
 }
 
 
-void exibirPreOrdem(arv *pRaiz){
-    if(pRaiz!= NULL){
 
-        printf("\n%s\n", pRaiz->info->nome);
-        printf("\n%s\n",pRaiz->esquerda);
-        printf("\n%s\n",pRaiz->direita);
-
-    }
-}
 void insere(arv *pRaiz, struct No *aux)
 {
 
@@ -179,18 +165,7 @@ printf("\nRegistrado!\n");
 
 }
 
-void imprime(arv *pRaiz)
-{
-puts(pRaiz->info->nome);
 
-puts(pRaiz->info->sexo);
-puts(pRaiz->info->pai);
-puts(pRaiz->info->mae);
-puts(pRaiz->info->conj);
-puts(pRaiz->info->sconj);
-puts(pRaiz->info->filho);
-puts(pRaiz->info->irmao);
-}
 
 void menu(arv *pRaiz)
 {
